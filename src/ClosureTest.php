@@ -37,11 +37,6 @@ final class ClosureTest extends TestCase
      */
     private $after;
 
-    /**
-     * @var \stdClass
-     */
-    private $context;
-
     public function __construct(string $file, string $description, Closure $test, Closure $before, Closure $after)
     {
         parent::__construct('__invoke');
@@ -51,27 +46,25 @@ final class ClosureTest extends TestCase
         $this->test = $test;
         $this->before = $before;
         $this->after = $after;
-
-        $this->context = new \stdClass();
     }
 
     public function setUp(): void
     {
         parent::setUp();
 
-        call_user_func(Closure::bind($this->before, $this->context));
+        call_user_func(Closure::bind($this->before, $this, static::class));
     }
 
     public function tearDown(): void
     {
         parent::tearDown();
 
-        call_user_func(Closure::bind($this->after, $this->context));
+        call_user_func(Closure::bind($this->after, $this, static::class));
     }
 
     public function __invoke(): void
     {
-        call_user_func(Closure::bind($this->test, $this->context));
+        call_user_func(Closure::bind($this->test, $this, static::class));
     }
 
     public function getFile(): string

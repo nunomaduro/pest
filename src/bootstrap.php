@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use NunoMaduro\Pest\Exceptions\NotImplementedYet;
 use NunoMaduro\Pest\Execution;
+use SebastianBergmann\Comparator\TestClass;
 
 include __DIR__ . '/../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php';
 
