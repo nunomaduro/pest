@@ -15,24 +15,29 @@
 
 **Pest** was created by, and is maintained by  **[Nuno Maduro](https://github.com/nunomaduro)**  and is an enjoyable **PHP testing solution**. Works out of the box for any PHPUnit project.
 
-## 🚀 Quick start
+## 🚀 Installation & Usage
+
+> **Requires [PHP 7.2+](https://php.net/releases/)**
+
+First, Install Pest using [Composer](https://getcomposer.org):
 
 ```
-# First, install:
 composer require nunomaduro/pest --dev
-
-# Then, use it:
-./vendor/bin/pest
 ```
 
-Create a new under `tests/foo.php`:
-
+Then, create a file named `tests/sum.php`. This will contain our actual test:
 ```php
-it('s awesome', function () {
-    assertTrue(Pest::isAwesome());
+it('adds 1 + 2 to equal 3', function () {
+    assertEquals(3, Math::sum(1,2));
 });
 ```
 
+Finally, run `vendor/bin/pest ` and pest will print this message:
+
+```
+PASS  ./sum.php
+✓ adds 1 + 2 to equal 3 (5ms)
+```
 
 ## 💖 Support the development
 **Do you like this project? Support it by donating**
