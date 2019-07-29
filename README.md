@@ -28,7 +28,7 @@ composer require nunomaduro/pest --dev
 Create a new under `tests/foo.php`:
 
 ```php
-it('is awesome', function () {
+it('s awesome', function () {
     assertTrue(Pest::isAwesome());
 });
 ```
