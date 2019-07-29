@@ -25,6 +25,15 @@ composer require nunomaduro/pest --dev
 ./vendor/bin/pest
 ```
 
+Create a new under `tests/foo.php`:
+
+```php
+it('is awesome', function () {
+    assertTrue(Pest::isAwesome());
+});
+```
+
+
 ## 💖 Support the development
 **Do you like this project? Support it by donating**
 
