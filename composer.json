@@ -1,0 +1,44 @@
+{
+    "name": "nunomaduro/pest",
+    "description": "The Pest Testing framework.",
+    "keywords": ["php", "pest", "unit", "integration", "testing"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nuno Maduro",
+            "email": "enunomaduro@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2.0",
+        "friendsofphp/php-cs-fixer": "^2.15",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "NunoMaduro\\Pest\\": "src/"
+        },
+        "files": [
+            "src/bootstrap.php"
+        ]
+    },
+    "require-dev": {
+        "localheinz/phpstan-rules": "^0.10.0",
+        "phpstan/phpstan-strict-rules": "^0.11.1",
+        "roave/no-floaters": "^1.1",
+        "phpstan/phpstan": "^0.11.12",
+        "symfony/var-dumper": "^4.3.3",
+        "thecodingmachine/phpstan-strict-rules": "^0.11.2"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist"
+    }
+}

@@ -1,0 +1,15 @@
+includes:
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/localheinz/phpstan-rules/rules.neon
+    - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
+
+parameters:
+    level: max
+    paths:
+        - src
+
+    ignoreErrors:
+        - "#is not allowed to extend#"
+
+    reportUnmatchedIgnoredErrors: false
+
