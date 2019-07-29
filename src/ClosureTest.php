@@ -37,7 +37,21 @@ final class ClosureTest extends TestCase
      */
     private $after;
 
-    public function __construct(string $file, string $description, Closure $test, Closure $before, Closure $after)
+    /**
+     * A custom test case class for running helper methods on.
+     *
+     * @var TestCase
+     */
+    private $customTestCase;
+
+    public function __construct(
+        string $file,
+        string $description,
+        Closure $test,
+        Closure $before,
+        Closure $after,
+        ?TestCase $customTestCase
+    )
     {
         parent::__construct('__invoke');
 
@@ -46,11 +60,15 @@ final class ClosureTest extends TestCase
         $this->test = $test;
         $this->before = $before;
         $this->after = $after;
+        $this->customTestCase = $customTestCase;
     }
 
     public function setUp(): void
     {
         parent::setUp();
+        if ($this->customTestCase !== null) {
+            $this->customTestCase->setUp();
+        }
 
         call_user_func(Closure::bind($this->before, $this, static::class));
     }
@@ -58,6 +76,9 @@ final class ClosureTest extends TestCase
     public function tearDown(): void
     {
         parent::tearDown();
+        if ($this->customTestCase !== null) {
+            $this->customTestCase->tearDown();
+        }
 
         call_user_func(Closure::bind($this->after, $this, static::class));
     }
@@ -84,5 +105,10 @@ final class ClosureTest extends TestCase
             $this->file,
             $this->description
         );
+    }
+
+    public function __call($name, $arguments)
+    {
+        return $this->customTestCase->$name(...$arguments);
     }
 }

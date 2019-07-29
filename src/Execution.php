@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace NunoMaduro\Pest;
 
 use Closure;
+use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestSuite as BaseTestSuite;
 use ReflectionFunction;
 
@@ -13,6 +14,13 @@ use ReflectionFunction;
  */
 final class Execution extends BaseTestSuite
 {
+    /**
+     * A custom test case class for running helper methods on.
+     *
+     * @var TestCase
+     */
+    private static $customTestCase;
+
     /**
      * @readonly
      *
@@ -70,7 +78,7 @@ final class Execution extends BaseTestSuite
         $after = self::$afterEach[$file] ?? function () {
             };
 
-        $test = new ClosureTest($file, $description, $closure, $before, $after);
+        $test = new ClosureTest($file, $description, $closure, $before, $after, self::$customTestCase);
 
         if (array_key_exists($file, self::$beforeAll)) {
             $beforeAllClosure = self::$beforeAll[$file];
@@ -88,5 +96,10 @@ final class Execution extends BaseTestSuite
         $reflectionClosure = new ReflectionFunction($closure);
 
         return (string) $reflectionClosure->getFileName();
+    }
+
+    public static function setTestCase(TestCase $testCase): void
+    {
+        self::$customTestCase = $testCase;
     }
 }
