@@ -11,7 +11,6 @@
     ],
     "require": {
         "php": "^7.2.0",
-        "friendsofphp/php-cs-fixer": "^2.15",
         "phpunit/phpunit": "^8.0"
     },
     "autoload": {
@@ -23,6 +22,7 @@
         ]
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.15",
         "localheinz/phpstan-rules": "^0.10.0",
         "phpstan/phpstan-strict-rules": "^0.11.1",
         "roave/no-floaters": "^1.1",
