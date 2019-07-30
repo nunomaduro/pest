@@ -18,7 +18,7 @@ final class Execution extends BaseTestSuite
      *
      * @var array<int, ClosureTest>
      */
-    public static $closureTests = [];
+    private static $closureTests = [];
 
     /**
      * @var array<string, \Closure>
@@ -39,6 +39,14 @@ final class Execution extends BaseTestSuite
      * @var array<string, \Closure>
      */
     private static $afterAll = [];
+
+    /**
+     * @return array<int, ClosureTest>
+     */
+    public static function getClosureTest(): array
+    {
+        return self::$closureTests;
+    }
 
     public static function beforeAll(Closure $closure): void
     {
@@ -64,11 +72,11 @@ final class Execution extends BaseTestSuite
     {
         $file = self::getFileName($closure);
 
-        $before = self::$beforeEach[$file] ?? function () {
-            };
+        $defaultClosure = Closure::fromCallable(function(): void {
+        });
 
-        $after = self::$afterEach[$file] ?? function () {
-            };
+        $before = self::$beforeEach[$file] ?? $defaultClosure;
+        $after = self::$afterEach[$file] ??  $defaultClosure;
 
         $test = new ClosureTest($file, $description, $closure, $before, $after);
 

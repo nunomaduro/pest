@@ -37,8 +37,13 @@ final class ClosureTest extends TestCase
      */
     private $after;
 
-    public function __construct(string $file, string $description, Closure $test, Closure $before, Closure $after)
-    {
+    public function __construct(
+        string $file,
+        string $description,
+        Closure $test,
+        Closure $before,
+        Closure $after
+    ) {
         parent::__construct('__invoke');
 
         $this->file = $file;
@@ -52,19 +57,19 @@ final class ClosureTest extends TestCase
     {
         parent::setUp();
 
-        call_user_func(Closure::bind($this->before, $this, static::class));
+        call_user_func(Closure::bind($this->before, $this, self::class));
     }
 
     public function tearDown(): void
     {
         parent::tearDown();
 
-        call_user_func(Closure::bind($this->after, $this, static::class));
+        call_user_func(Closure::bind($this->after, $this, self::class));
     }
 
     public function __invoke(): void
     {
-        call_user_func(Closure::bind($this->test, $this, static::class));
+        call_user_func(Closure::bind($this->test, $this, self::class));
     }
 
     public function getFile(): string
@@ -74,6 +79,10 @@ final class ClosureTest extends TestCase
 
     public function getName(bool $withDataSet = true): string
     {
+        if ($withDataSet) {
+            return $this->description . $this->getDataSetAsString(false);
+        }
+
         return $this->description;
     }
 

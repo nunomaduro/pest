@@ -6,7 +6,6 @@ namespace NunoMaduro\Pest\Console;
 
 use NunoMaduro\Pest\ClosureTest;
 use PHPUnit\Framework\Test;
-use PHPUnit\Framework\TestResult;
 use PHPUnit\Runner\BaseTestRunner;
 use PHPUnit\Runner\PhptTestCase;
 use PHPUnit\Runner\Version;
@@ -62,15 +61,15 @@ final class Printer extends CliTestDoxPrinter
 
     protected function formatClassName(Test $test): string
     {
-        if ($test instanceof ClosureTest) {
-            $file = $test->getFile();
-            $relativeFile = explode('/tests/', $file)[1];
-            $parts = explode('/', $relativeFile);
-            $last = array_pop($parts);
-            return Color::dim(implode('/', $parts)) . '/' . $last;
+        if (! $test instanceof ClosureTest) {
+            return \get_class($test);
         }
 
-        return \get_class($test);
+        $file = $test->getFile();
+        $relativeFile = explode('/tests/', $file)[1];
+        $parts = explode('/', $relativeFile);
+        $last = array_pop($parts);
+        return Color::dim(implode('/', $parts)) . '/' . $last;
     }
 
     public function write(string $buffer): void
@@ -82,6 +81,10 @@ final class Printer extends CliTestDoxPrinter
         parent::write($buffer);
     }
 
+    /**
+     * @param array<string, string|int|float|bool> $prevResult
+     * @param array<string, string|int|float|bool> $result
+     */
     protected function writeTestResult(array $prevResult, array $result): void
     {
         // spacer line for new suite headers and after verbose messages
@@ -92,22 +95,35 @@ final class Printer extends CliTestDoxPrinter
 
         // suite header
         if ($prevResult['className'] !== $result['className']) {
-            $this->write($this->colorizeTextBox('underlined', $result['className']) . \PHP_EOL);
+            $this->write($this->colorizeTextBox(
+                'underlined',
+                $result['className']
+            ) . \PHP_EOL);
         }
 
         // test result line
-        if ($this->colors && $result['className'] == PhptTestCase::class) {
-            $testName = Color::colorizePath($result['testName'], $prevResult['testName'], true);
-        } else {
-            $testName = $result['testMethod'];
+        $testName = $result['testMethod'];
+        if ($this->colors && $result['className'] === PhptTestCase::class) {
+            $testName = Color::colorizePath(
+                $result['testName'],
+                $prevResult['testName'],
+                true
+            );
         }
 
         $style = self::STATUS_STYLES[$result['status']];
+
+        $time = '';
+        if ($this->verbose) {
+            $formattedTime = $this->formatRuntime($result['time'], 'fg-white');
+            $time = ' (' . trim($formattedTime) . ')';
+        }
+
         $line = \sprintf(
             ' %s %s%s' . \PHP_EOL,
             $this->colorizeTextBox($style['color'], $style['symbol']),
             $testName,
-            $this->verbose ? ' (' . trim($this->formatRuntime($result['time']), 'fg-white') . ')' : ''
+            $time
         );
 
         $this->write($line);
@@ -125,6 +141,6 @@ final class Printer extends CliTestDoxPrinter
             $color = 'fg-magenta';
         }
 
-        return Color::colorize($color, ' ' . (int) \ceil($time * 1000) . ' ' . Color::dim('ms'));
+        return Color::colorize($color, (int) \ceil($time * 1000) . ' ' . Color::dim('ms'));
     }
 }
