@@ -43,7 +43,7 @@ final class Execution extends BaseTestSuite
     /**
      * @return array<int, ClosureTest>
      */
-    public static function getClosureTest(): array
+    public static function getClosureTests(): array
     {
         return self::$closureTests;
     }

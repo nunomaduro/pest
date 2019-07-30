@@ -15,7 +15,7 @@ final class TestSuite extends BaseTestSuite
     {
         parent::__construct();
 
-        foreach (Execution::getClosureTest() as $test) {
+        foreach (Execution::getClosureTests() as $test) {
             $this->addTest($test);
         }
     }
