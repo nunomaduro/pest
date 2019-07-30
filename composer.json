@@ -46,20 +46,23 @@
         "bin/pest"
     ],
     "scripts": {
+        "phpstan":"phpstan analyse --ansi",
         "ecs": "ecs check src --ansi --config vendor/symplify/easy-coding-standard/config/set/clean-code.yaml",
         "pest": "bin/pest --colors=always",
         "insights": "phpinsights analyse --ansi -v --no-interaction --min-quality=95 --min-architecture=90 --min-style=97.8",
         "tests": [
             "@ecs",
+            "@phpstan",
             "@pest",
             "@insights"
         ]
     },
     "scripts-descriptions": {
         "ecs": "Run the ecs tests.",
+        "phpstan": "Run the phpstan tests.",
         "pest": "Run the pest tests against himself.",
-        "insights": "Run the phpinsights tests",
-        "tests": "Run all tests including ecs, pest and phpinsights."
+        "insights": "Run the phpinsights tests.",
+        "tests": "Run all tests including ecs, phpstan, pest and phpinsights."
     }
 
 }

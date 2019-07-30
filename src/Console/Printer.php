@@ -82,8 +82,7 @@ final class Printer extends CliTestDoxPrinter
     }
 
     /**
-     * @param array<string, string|int|float|bool> $prevResult
-     * @param array<string, string|int|float|bool> $result
+     * {@inheritdoc}
      */
     protected function writeTestResult(array $prevResult, array $result): void
     {

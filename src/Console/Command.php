@@ -14,7 +14,7 @@ use PHPUnit\TextUI\ResultPrinter;
 final class Command extends BaseCommand
 {
     /**
-     * @param array<int, string> $argv
+     * {@inheritdoc}
      */
     protected function handleArguments(array $argv): void
     {
