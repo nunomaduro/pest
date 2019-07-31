@@ -1,6 +1,7 @@
 <p align="center">
 
-  <img alt="Pest" src="https://raw.githubusercontent.com/nunomaduro/pest/feat/first/art/logo.png" >
+  <img alt="Pest" src="https://raw.githubusercontent.com/nunomaduro/pest/master/art/logo.png" >
+  <img alt="Pest 2" src="https://raw.githubusercontent.com/nunomaduro/pest/master/art/logo2.png" >
 
   <p align="center">
     <a href="https://travis-ci.org/nunomaduro/pest"><img src="https://img.shields.io/travis/nunomaduro/pest/master.svg" alt="Build Status"></a>
