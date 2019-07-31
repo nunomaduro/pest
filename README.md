@@ -143,7 +143,7 @@ test('', function () { echo 'test 2'); };
 // beforeEach
 // test
 // afterEach
-// beforeAll
+// afterAll
 ```
 
 ### Mocks
