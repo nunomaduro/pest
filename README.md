@@ -31,6 +31,8 @@ test('adds 1 + 2 to equal 3', function () {
 });
 ```
 
+Then, as usual, if you don't have it yet, create your `phpunit.xml.dist`.
+
 Finally, run `vendor/bin/pest ` and pest will print this message:
 
 ```
