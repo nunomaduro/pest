@@ -148,7 +148,7 @@ test('', function () { echo 'test 2'); };
 
 ### Mocks
 
-The given closure to the `test`|`it` method is bound to a tipical `PHPUnit\Framework\TestCase`. For mocks, you
+The given closure to the `test`|`it` method is bound to a typical `PHPUnit\Framework\TestCase`. For mocks, you
 can optionally create a mock using the `$this->createMock` method.
 
 ```php
