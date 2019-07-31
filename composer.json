@@ -49,7 +49,7 @@
         "phpstan":"phpstan analyse --ansi",
         "ecs": "ecs check src --ansi --config vendor/symplify/easy-coding-standard/config/set/clean-code.yaml",
         "pest": "bin/pest --colors=always",
-        "insights": "phpinsights analyse --ansi -v --no-interaction --min-quality=95 --min-architecture=90 --min-style=97.8",
+        "insights": "phpinsights analyse --ansi -v --no-interaction --min-quality=95 --min-architecture=90 --min-style=97.8 --disable-security-check",
         "tests": [
             "@ecs",
             "@phpstan",
