@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 use NunoMaduro\Pest\Execution;
 
-include __DIR__ . '/../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php';
+if (file_exists(__DIR__ . '/../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php')) {
+    include __DIR__ . '/../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php';
+} else {
+    include __DIR__ . '/../../../phpunit/phpunit/src/Framework/Assert/Functions.php';
+}
 
 function beforeAll(Closure $closure): void
 {

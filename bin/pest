@@ -2,7 +2,12 @@
 <?php declare(strict_types=1);
 
 (static function () {
-    require __DIR__ . '/../vendor/autoload.php';
+
+    if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+        require __DIR__ . '/../vendor/autoload.php';
+    } else {
+        require __DIR__ . '/../../../autoload.php';
+    }
 
     \NunoMaduro\Pest\Console\Command::main();
 })();
