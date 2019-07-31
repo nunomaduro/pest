@@ -77,7 +77,7 @@ it('has something', (function () {
 });
 ```
 
-For the full list, see the expect [Assertations Doc from PHPUnit](https://phpunit.readthedocs.io/en/latest/assertions.html).
+For the full list, see the [Assertions documentation from PHPUnit](https://phpunit.readthedocs.io/en/latest/assertions.html).
 
 ### Setup and Teardown
 
