@@ -16,7 +16,7 @@
 
 ## 🚀 Installation & Usage
 
-> **Requires [PHP 7.2+](https://php.net/releases/)**
+> **Requires [PHP 7.2+](https://php.net/releases/) and phpunit 8.1+**
 
 First, Install Pest using [Composer](https://getcomposer.org):
 
