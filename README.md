@@ -1,7 +1,7 @@
 <p align="center">
 
   <p float="left">
-    <img alt="Pest" src="https://raw.githubusercontent.com/nunomaduro/pest/master/art/logo.png" >
+    <img alt="Pest" src="https://raw.githubusercontent.com/nunomaduro/pest/master/art/banner.png" >
   </p>
 
   <p align="center">
