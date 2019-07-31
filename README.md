@@ -92,11 +92,11 @@ afterEach(function () {
     Database::delete();
 });
 
-test('city database has Vienna', (function () {
-    assertTrue(City::exists('San Juan'));
+test('city database has Vienna', function () {
+    assertTrue(City::exists('Vienna'));
 });
 
-test('city database has San Juan', (function () {
+test('city database has San Juan', function () {
     assertTrue(City::exists('San Juan'));
 });
 ```
@@ -117,7 +117,7 @@ afterAll(function () {
 });
 
 test('city database has Vienna', function () {
-    assertTrue(City::exists('San Juan'));
+    assertTrue(City::exists('Vienna'));
 });
 
 test('city database has San Juan', function () {
