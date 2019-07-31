@@ -138,10 +138,10 @@ test('', function () { echo 'test 1'); };
 test('', function () { echo 'test 2'); };
 // beforeAll
 // beforeEach
-// test
+// test 1
 // afterEach
 // beforeEach
-// test
+// test 2
 // afterEach
 // beforeAll
 ```
