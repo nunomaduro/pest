@@ -62,7 +62,6 @@
         "phpstan": "Run the phpstan tests.",
         "pest": "Run the pest tests against himself.",
         "insights": "Run the phpinsights tests.",
-        "tests": "Run all tests including ecs, phpstan, pest and phpinsights."
+        "tests": "Run all tests."
     }
-
 }
