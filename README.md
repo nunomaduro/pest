@@ -1,18 +1,16 @@
 <p align="center">
-
-  <p float="left">
-    <img alt="Pest" src="https://raw.githubusercontent.com/nunomaduro/pest/master/art/banner.png" >
-  </p>
-
-  <p align="center">
-    <a href="https://travis-ci.org/nunomaduro/pest"><img src="https://img.shields.io/travis/nunomaduro/pest/master.svg" alt="Build Status"></a>
-    <a href="https://packagist.org/packages/nunomaduro/pest"><img src="https://poser.pugx.org/nunomaduro/pest/d/total.svg" alt="Total Downloads"></a>
-    <a href="https://packagist.org/packages/nunomaduro/pest"><img src="https://poser.pugx.org/nunomaduro/pest/v/stable.svg" alt="Latest Version"></a>
-    <a href="https://packagist.org/packages/nunomaduro/pest"><img src="https://poser.pugx.org/nunomaduro/pest/license.svg" alt="License"></a>
-  </p>
+    <img src="https://raw.githubusercontent.com/nunomaduro/pest/master/art/logo.gif" width="350" alt="PEST">
+    <br/>
+    <img src="https://raw.githubusercontent.com/nunomaduro/pest/master/art/preview.png" width="882" alt="PEST Preview">
+    <p align="center">
+        <a href="https://travis-ci.org/nunomaduro/pest"><img src="https://img.shields.io/travis/nunomaduro/pest/master.svg" alt="Build Status"></a>
+        <a href="https://packagist.org/packages/nunomaduro/pest"><img src="https://poser.pugx.org/nunomaduro/pest/d/total.svg" alt="Total Downloads"></a>
+        <a href="https://packagist.org/packages/nunomaduro/pest"><img src="https://poser.pugx.org/nunomaduro/pest/v/stable.svg" alt="Latest Version"></a>
+        <a href="https://packagist.org/packages/nunomaduro/pest"><img src="https://poser.pugx.org/nunomaduro/pest/license.svg" alt="License"></a>
+    </p>
 </p>
 
-**Pest** was created by, and is maintained by  **[Nuno Maduro](https://github.com/nunomaduro)**  and is an enjoyable **PHP testing solution**. Works out of the box for any PHPUnit project.
+**Pest** was carefully crafted to bring the joy of testing with [JEST](https://github.com/facebook/jest) to PHP. It was created by **[Nuno Maduro](https://github.com/nunomaduro)**, and currently _decorated_ by **[Caneco](https://github.com/caneco)**.
 
 ## 🚀 Installation & Usage
 
