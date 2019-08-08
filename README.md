@@ -1,7 +1,7 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/caneco/pest/master/art/logo.gif" width="350" alt="PEST">
+    <img src="https://raw.githubusercontent.com/nunomaduro/pest/master/art/logo.gif" width="350" alt="PEST">
     <br/>
-    <img src="https://raw.githubusercontent.com/caneco/pest/master/art/preview.png" width="882" alt="PEST Preview">
+    <img src="https://raw.githubusercontent.com/nunomaduro/pest/master/art/preview.png" width="882" alt="PEST Preview">
     <p align="center">
         <a href="https://travis-ci.org/nunomaduro/pest"><img src="https://img.shields.io/travis/nunomaduro/pest/master.svg" alt="Build Status"></a>
         <a href="https://packagist.org/packages/nunomaduro/pest"><img src="https://poser.pugx.org/nunomaduro/pest/d/total.svg" alt="Total Downloads"></a>
