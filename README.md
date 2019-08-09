@@ -166,7 +166,7 @@ it('works fine with mocks', function () {
 
 ### Migrating to Pest from PHPUnit
 
-No migration need. It just works.
+No migration is needed. It just works.
 
 ### Configuration
 
