@@ -35,6 +35,14 @@ final class Command extends BaseCommand
         foreach (Execution::getClosureTests() as $test) {
             $testSuite->addTest($test);
         }
+
+        $tests = $testSuite->tests();
+
+        uasort($tests, static function ($testA, $testB) {
+            return strnatcmp($testA->getName(), $testB->getName());
+        });
+
+        $testSuite->setTests($tests);
     }
 
     protected function createRunner(): TestRunner
