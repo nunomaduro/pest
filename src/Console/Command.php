@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NunoMaduro\Pest\Console;
 
+use NunoMaduro\Pest\ClosureTest;
 use NunoMaduro\Pest\Execution;
 use NunoMaduro\Pest\Extensions\AfterLastTest;
 use PHPUnit\Framework\TestSuite;
@@ -38,8 +39,11 @@ final class Command extends BaseCommand
 
         $tests = $testSuite->tests();
 
-        uasort($tests, static function ($testA, $testB) {
-            return strnatcmp($testA->getName(), $testB->getName());
+        uasort($tests, function ($testA, $testB) {
+            return strcasecmp(
+                $testA instanceof ClosureTest ? $testA->getFile() : $testA->getName(),
+                $testB instanceof ClosureTest ? $testB->getFile() : $testB->getName()
+            );
         });
 
         $testSuite->setTests($tests);
