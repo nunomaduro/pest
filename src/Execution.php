@@ -5,33 +5,33 @@ declare(strict_types=1);
 namespace NunoMaduro\Pest;
 
 use Closure;
-use PHPUnit\Framework\TestSuite as BaseTestSuite;
 use ReflectionFunction;
 
 /**
  * @internal
  */
-final class Execution extends BaseTestSuite
+final class Execution
 {
     /**
-     * @var array<int, ClosureTest>
-     */
-    private static $closureTests = [];
-
-    /**
+     * @readonly
+     *
      * @var array<string, \Closure>
      */
-    private static $beforeEach = [];
+    public static $beforeEach = [];
 
     /**
+     * @readonly
+     *
      * @var array<string, \Closure>
      */
-    private static $beforeAll = [];
+    public static $beforeAll = [];
 
     /**
+     * @readonly
+     *
      * @var array<string, \Closure>
      */
-    private static $afterEach = [];
+    public static $afterEach = [];
 
     /**
      * @readonly
@@ -39,14 +39,6 @@ final class Execution extends BaseTestSuite
      * @var array<string, \Closure>
      */
     public static $afterAll = [];
-
-    /**
-     * @return array<int, ClosureTest>
-     */
-    public static function getClosureTests(): array
-    {
-        return self::$closureTests;
-    }
 
     public static function beforeAll(Closure $closure): void
     {
@@ -68,30 +60,7 @@ final class Execution extends BaseTestSuite
         self::$afterEach[self::getFileName($closure)] = $closure;
     }
 
-    public static function test(string $description, Closure $closure): void
-    {
-        $file = self::getFileName($closure);
-
-        $defaultClosure = Closure::fromCallable(function (): void {
-        });
-
-        $before = self::$beforeEach[$file] ?? $defaultClosure;
-        $after = self::$afterEach[$file] ?? $defaultClosure;
-
-        $test = new ClosureTest($file, $description, $closure, $before, $after);
-
-        if (array_key_exists($file, self::$beforeAll)) {
-            $beforeAllClosure = self::$beforeAll[$file];
-
-            call_user_func($beforeAllClosure);
-
-            unset(self::$beforeAll[$file]);
-        }
-
-        self::$closureTests[] = $test;
-    }
-
-    private static function getFileName(Closure $closure): string
+    public static function getFileName(Closure $closure): string
     {
         $reflectionClosure = new ReflectionFunction($closure);
 

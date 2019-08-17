@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace NunoMaduro\Pest\Console;
 
 use NunoMaduro\Pest\ClosureTest;
-use NunoMaduro\Pest\Execution;
 use NunoMaduro\Pest\Extensions\AfterLastTest;
+use NunoMaduro\Pest\Suite;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Framework\WarningTestCase;
 use PHPUnit\TextUI\Command as BaseCommand;
@@ -18,6 +18,13 @@ use PHPUnit\TextUI\TestRunner;
  */
 final class Command extends BaseCommand
 {
+    private $suite;
+
+    public function __construct(Suite $suite)
+    {
+        $this->suite = $suite;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -33,7 +40,7 @@ final class Command extends BaseCommand
 
         $this->removeTestClosureWarnings($testSuite);
 
-        foreach (Execution::getClosureTests() as $test) {
+        foreach ($this->suite->getTests() as $test) {
             $testSuite->addTest($test);
         }
 

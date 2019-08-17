@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use NunoMaduro\Pest\Execution;
+use NunoMaduro\Pest\Suite;
 
 if (file_exists(__DIR__ . '/../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php')) {
     include __DIR__ . '/../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php';
@@ -22,12 +23,12 @@ function beforeEach(Closure $closure): void
 
 function test(string $description, Closure $closure): void
 {
-    Execution::test($description, $closure);
+    Suite::test(sprintf('Test %s', $description), $closure);
 }
 
 function it(string $description, Closure $closure): void
 {
-    Execution::test($description, $closure);
+    Suite::test(sprintf('It %s', $description), $closure);
 }
 
 function afterEach(Closure $closure): void

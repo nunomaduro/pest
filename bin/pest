@@ -1,6 +1,9 @@
 #!/usr/bin/env php
 <?php declare(strict_types=1);
 
+use NunoMaduro\Pest\Console\Command;
+use NunoMaduro\Pest\Suite;
+
 (static function () {
 
     if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
@@ -9,7 +12,9 @@
         require __DIR__ . '/../../../autoload.php';
     }
 
-    \NunoMaduro\Pest\Console\Command::main();
+    $suite = Suite::getInstance();
+
+    exit((new Command($suite))->run($_SERVER['argv']));
 })();
 
 
