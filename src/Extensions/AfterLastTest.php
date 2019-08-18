@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NunoMaduro\Pest\Extensions;
 
-use NunoMaduro\Pest\Execution;
+use NunoMaduro\Pest\Suite;
 use PHPUnit\Runner\AfterLastTestHook;
 
 /**
@@ -14,7 +14,7 @@ final class AfterLastTest implements AfterLastTestHook
 {
     public function executeAfterLastTest(): void
     {
-        foreach (Execution::$afterAll as $closure) {
+        foreach (Suite::getInstance()->afterAll as $closure) {
             call_user_func($closure);
         }
     }

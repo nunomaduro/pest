@@ -18,6 +18,9 @@ use PHPUnit\TextUI\TestRunner;
  */
 final class Command extends BaseCommand
 {
+    /**
+     * @var Suite
+     */
     private $suite;
 
     public function __construct(Suite $suite)
@@ -40,7 +43,7 @@ final class Command extends BaseCommand
 
         $this->removeTestClosureWarnings($testSuite);
 
-        foreach ($this->suite->getTests() as $test) {
+        foreach ($this->suite->tests as $test) {
             $testSuite->addTest($test);
         }
 
