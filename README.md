@@ -53,7 +53,7 @@ test('did not rain', function () {
     assertEquals(0, Weather::inchesOfRain());
 });
 
-# Or, also under the alias `it`
+// Or, also under the alias `it`
 it('did not rain', function () {
     assertEquals(0, Weather::inchesOfRain());
 });
@@ -82,12 +82,12 @@ For the full list, see the [Assertions documentation from PHPUnit](https://phpun
 Often while writing tests you have some setup work that needs to happen before tests run, and you have some finishing work that needs to happen after tests run. Pest provides helper functions to handle this.
 
 ```php
-# Runs before each test on this file
+// Runs before each test on this file
 beforeEach(function () {
     Database::migrate();
 });
 
-# Runs after each test on this file
+// Runs after each test on this file
 afterEach(function () {
     Database::delete();
 });
@@ -106,12 +106,12 @@ test('city database has San Juan', function () {
 In some cases, you only need to do setup once, at the beginning of a file. This can be especially bothersome when the setup is asynchronous, so you can't just do it inline. Pest provides beforeAll and afterAll to handle this situation.
 
 ```php
-# Runs before the first test of the file
+// Runs before the first test of the file
 beforeAll(function () {
     Database::migrate();
 });
 
-# Runs after the last test of the file
+// Runs after the last test of the file
 afterAll(function () {
     Database::delete();
 });
